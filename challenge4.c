@@ -9,6 +9,7 @@ The program should enable the user
 1 to add book details
 2. Save the book details to a file.
 3. View the book details*/
+
 #include<stdio.h>
 
 typedef struct
@@ -16,27 +17,27 @@ typedef struct
     char title[30];
     char author[30];
     int quant;
-    float price;
+    int price;
 }book;
 
 int bookstore()
 {
     int ans;
-    do
-    {FILE *fptr;
+
+    FILE *fptr;
     fptr = fopen("Book_Details.txt","w");
 
     book store;
 
     printf("Enter the details of the book below: ");
 
-    getchar();
-    printf("\nTitle of the book: ");
-    scanf("%[^\n]s",store.title);
 
-    getchar();
+    printf("\nTitle of the book: ");
+    fgets(store.title,100,stdin);
+
+
     printf("Book author: ");
-    scanf("%[^\n]s",store.author);
+    fgets(store.author,100,stdin);
 
     printf("Quantity: ");
     scanf("%d",&store.quant);
@@ -46,31 +47,25 @@ int bookstore()
 
     fprintf(fptr,"\n\tLELEI BOOKSTORE\n\t***************");
     fprintf(fptr,"*****************\nBOOK DETAILS: \n*******************");
-    fprintf(fptr,"BOOK TITLE: \t%s\nAUTHOR: \t%s\nQUANTITY \t%d\nPRICE: \t%.2f");
+    fprintf(fptr,"BOOK TITLE: \t%s\nAUTHOR: \t%s\nQUANTITY \t%d\nPRICE: \t%.2f",store.title,store.author,store.quant,store.price);
     fclose(fptr);
-    }while(ans == 1);
+
 
 }
 
 
 int main()
 {
-    //bookstore();
+    bookstore();
     int ans;
-    printf("Do you wish enter another book? \n1-Yes\n0-No\t: ");
-    scanf("%d",&ans);
 
-    switch(ans)
+    do
     {
-        case 1:
-            bookstore();
-            break;
-        case 0:
-            return 0;
-            break;
-        default:
-            printf("Invalid input!!");
-            break;
-    }
+        printf("\nDo you wish enter another book? \n1. Yes\n0. No\t: ");
+        scanf("%d",&ans);
+        bookstore();
+
+    }while(ans==1);
 
 }
+
