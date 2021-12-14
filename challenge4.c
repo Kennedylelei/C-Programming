@@ -23,21 +23,21 @@ typedef struct
 int bookstore()
 {
     int ans;
-
+    book store;
     FILE *fptr;
     fptr = fopen("Book_Details.txt","w");
 
-    book store;
+
 
     printf("Enter the details of the book below: ");
 
 
     printf("\nTitle of the book: ");
-    fgets(store.title,100,stdin);
+    scanf("%s",store.title);
 
 
     printf("Book author: ");
-    fgets(store.author,100,stdin);
+    scanf("%s",store.author);
 
     printf("Quantity: ");
     scanf("%d",&store.quant);
@@ -50,33 +50,21 @@ int bookstore()
     fprintf(fptr,"BOOK TITLE: \t%s\nAUTHOR: \t%s\nQUANTITY \t%d\nPRICE: \t%.2f",store.title,store.author,store.quant,store.price);
     fclose(fptr);
 
-
 }
 
 
 int main()
 {
-    bookstore();
     int ans;
     do
     {
-        printf("Do you wish enter another book? \n1. Yes\n0. No\t: ");
+        bookstore();
+        printf("\nDo you wish enter another book? \n1. Yes\n0. No\t: ");
         scanf("%d",&ans);
 
-        switch(ans)
-        {
-           case 1:
-               bookstore();
-               break;
-           case 0:
-               return 0;
-               break;
-           default:
-            printf("Invalid input!!");
-            break;
-        }
 
-    }while(ans==1);
+    }while(ans == 1);
 
 }
+
 
