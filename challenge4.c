@@ -58,12 +58,23 @@ int main()
 {
     bookstore();
     int ans;
-
     do
     {
-        printf("\nDo you wish enter another book? \n1. Yes\n0. No\t: ");
+        printf("Do you wish enter another book? \n1. Yes\n0. No\t: ");
         scanf("%d",&ans);
-        bookstore();
+
+        switch(ans)
+        {
+           case 1:
+               bookstore();
+               break;
+           case 0:
+               return 0;
+               break;
+           default:
+            printf("Invalid input!!");
+            break;
+        }
 
     }while(ans==1);
 
