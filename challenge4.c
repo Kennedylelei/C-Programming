@@ -56,16 +56,16 @@ int bookstore()
 
 int main()
 {
-    bookstore();
     int ans;
-
     do
     {
-        printf("\nDo you wish enter another book? \n1. Yes\n0. No\t: ");
-        scanf("%d",&ans);
         bookstore();
 
-    }while(ans==1);
+        printf("\nDo you wish enter another book? \n1. Yes\n0. No\t: ");
+        scanf("%d",&ans);
+
+
+    }while(ans == 1);
 
 }
 
